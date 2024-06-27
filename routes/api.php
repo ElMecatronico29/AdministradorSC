@@ -15,7 +15,7 @@ Route::get('/proyecto/{id}',[AdminController::class, 'progresoProyecto']);
 Route::get('/profesores', [ProfesorController::class, 'listarProfesores']);
 Route::get('/estudiantes', [EstudianteController::class, 'listarEstudiantes']);
 Route::get('/solicitudes', [SolicitudController::class, 'listarSolicitudes']);
-Route::patch('/solicitudes/{id}/aceptar', [SolicitudController::class, 'aceptarSolicitud']);
+Route::put('/solicitudes/{id}/aceptar', [SolicitudController::class, 'aceptarSolicitud']);
 Route::delete('/solicitudes/{id}/eliminar', [SolicitudController::class, 'eliminarSolicitud']);
 
 Route::post('/crear_proyectos', [ProyectoController::class, 'crearProyecto']);

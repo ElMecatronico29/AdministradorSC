@@ -63,10 +63,13 @@ class ProyectoController extends Controller
         $proyectos = Proyecto::with(['estudiantes', 'profesore'])->get();
 
         $result = $proyectos->map(function ($proyecto) {
+            $integrantes = $proyecto->estudiantes->map(function ($estudiante) {
+                return $estudiante->usuario->nombre;
+            })->toArray();
             return [
                 'nombre_del_proyecto' => $proyecto->titulo,
-                'integrantes' => $proyecto->estudiantes->pluck('usuario_id')->toArray(),
-                'profesorTutor' => $proyecto->profesore ? $proyecto->profesore->usuario_id : null,
+                'integrantes' => $integrantes,
+                'profesorTutor' => $proyecto->profesore ? $proyecto->profesore->usuario->nombre : null,
             ];
         });
 

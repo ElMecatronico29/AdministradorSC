@@ -48,7 +48,7 @@ class SolicitudController extends Controller
     }
     public function listarSolicitudes()
     {
-        $solicitudes = Solicitude::select('titulo', 'descripcion', 'tutor_solicitado')->get();
+        $solicitudes = Solicitude::select('id','titulo', 'descripcion','areaAplicacion', 'tutor_solicitado')->get();
 
         return response()->json($solicitudes);
     }
